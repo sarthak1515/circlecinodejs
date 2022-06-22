@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="display:flex;justify-content:space-around ;">
+    <div id="chart" style="width: 400px; height: 300px"></div>
+    <div id="pie" style="width: 600px; height: 600px"></div>
+   
+</div>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+      Highcharts.chart("chart", {
+        // chart:{type:"bar"},
+        chart: { type: "column" ,
+    // events:{
+    //     load:pullData
+    // }
+            } ,
+        // chart:{type:"area"},
+        // chart:{type:"line"},
+        // chart:{type:"spline"},
+        title: { text: "Year Wise Covid Chart" },
+        // subtitle:{text:"fiscal year 2020"},
+        xAxis: {
+          title: { text: "Year" },
+          // tickInterval:0.5,
+          categories: ["2020", "2021", "2022"],
+        //   reversed: true,
+        },
+        // xAxis:{
+        //     labels:{
+        //         enabled:false
+        //     },
+        //     tickInterval:1
+        // },
+        yAxis: {
+          title: { text: "Coronavirus cases" },
+          min:0,
+          max:40000000,
+        //   categories:[0,10000000,20000000,30000000,40000000]
+        },
+        // yAxis: {
+        //     min:0,
+        //     max:40000000,
+        //   title: { text: "Coronavirus cases" },
+        //   tickInterval:1,
+        // },
+        series: [
+        //   {
+        //     name: "Model R",
+        //     data: [
+        //       [0, 5],
+        //       [1, 8],
+        //       {
+        //         x: 2,
+        //         y: 11,
+        //         name: "march sale",
+        //         color: "orange",
+        //       },
+        //       [3, 19],
+        //       [4, 7],
+        //       [5, 8],
+        //     ],
+        //     color: "blue",
+        //     dataSorting: {
+        //       enabled: true,
+        //     },
+        //   },
+          {
+              name:"Confirmed Cases",
+              data:[10267283,24838804,34838804],
+              color:"red"
+          },
+        //   {
+        //       name:"Active Cases",
+        //       data:[3,6,8],
+        //       color:"blue"
+        //   },
+          {
+              name:"Cured Cases",
+              data:[5000008,6569848,7456812],
+              color:"blue"
+          },
+          {
+              name:"Death",
+              data:[2267275,4458469,6548945],
+              color:"orange"
+          }
+
+        ],
+        legend: { enabled: true },
+      });
+
+
+    //   pie chart
+    Highcharts.chart('pie', {
+  chart: {
+    type: 'pie'
+  },
+  title: {
+    text: 'State Wise Covid Cases'
+  },
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  accessibility: {
+    point: {
+      valueSuffix: '%'
+    }
+  },
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      dataLabels: {
+        enabled: true,
+        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+      }
+    }
+  },
+  series: [
+    {
+    name: 'Total Cases',
+    colorByPoint: true,
+    data: [{
+      name: 'Andaman and Nicobar Islands',
+      y: 10.64,
+    //   sliced: true,
+    //   selected: true
+    }, {
+      name: 'Andhra Pradesh',
+      y: 11.84
+    }, {
+      name: '	Arunachal Pradesh',
+      y: 10.85
+    }, {
+      name: 'Assam',
+      y: 4.67
+    }, {
+      name: 'Bihar',
+      y: 4.18
+    }, {
+      name: 'Chandigarh',
+      y: 1.64
+    }, {
+      name: 'Chhattisgarh',
+      y: 1.6
+    }, {
+      name: '	Dadra and Nagar Haveli and Daman and Diu',
+      y: 1.2
+    }, {
+      name: 'Delhi',
+      y: 2.61
+    }, {
+      name: 'Goa',
+      y: 2.61
+    }
+    , {
+      name: 'Gujarat',
+      y: 2.61
+    }, {
+      name: 'Haryana',
+      y: 2.61
+    }, {
+      name: 'Himachal Pradesh',
+      y: 2.61
+    }, {
+      name: 'Jammu and Kashmir',
+      y: 2.61
+    }, {
+      name: 'Jharkhand',
+      y: 2.61
+    }, {
+      name: '	Karnataka',
+      y: 2.61
+    }, {
+      name: '	Kerala',
+      y: 2.61
+    }, {
+      name: '	Ladakh',
+      y: 2.61
+    }, {
+      name: 'Madhya Pradesh',
+      y: 2.61
+    },{
+      name: 'Maharashtra',
+      y: 2.61
+    },{
+      name: 'Manipur',
+      y: 2.61
+    },{
+      name: 'Meghalaya',
+      y: 2.61
+    },{
+      name: '	Mizoram',
+      y: 2.61
+    },{
+      name: 'Nagaland',
+      y: 2.61
+    },{
+      name: 'Odisha',
+      y: 2.61
+    },{
+      name: 'Puducherry',
+      y: 2.61
+    },{
+      name: '	Punjab',
+      y: 2.61
+    },{
+      name: '	Rajasthan',
+      y: 2.61
+    },{
+      name: '	Sikkim',
+      y: 2.61
+    },{
+      name: '	Tamil Nadu',
+      y: 2.61
+    },{
+      name: 'Telangana',
+      y: 2.61
+    },{
+      name: 'Delhi',
+      y: 2.61
+    }
+
+
+]
+  }]
+});
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="chart" style="width:80vw; height:600px;"></div>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        var url="http://localhost:8080/time"
+        var chart=Highcharts.chart("chart", {
+       // chart:{type:"bar"},
+       chart: { type: "area" ,
+   events:{
+       load:pullData
+   }
+           } ,
+       // chart:{type:"area"},
+       // chart:{type:"line"},
+       // chart:{type:"spline"},
+       title: { text: "live api testing" },
+       // subtitle:{text:"fiscal year 2020"},
+       // xAxis: {
+       //   title: { text: "Year" },
+       //   // tickInterval:0.5,
+       //   categories: ["2020", "2021", "2022"],
+       //   reversed: true,
+       // },
+       xAxis:{
+        // type:"category",
+           labels:{
+               enabled:false
+           },
+        //    tickInterval:1
+       },
+       // yAxis: {
+       //   title: { text: "Coronavirus cases" },
+       //   categories:[0,10000000,20000000,30000000,40000000]
+       // },
+       yAxis: {
+         min:0,
+         max:100,
+         title: { text: "usage" },
+         tickInterval:10,
+       },
+       series:[{
+            name:"memory usage",
+            data:[0,0,0,0,0,0]
+       }],
+       legend: { enabled: true },
+     });
+     function pullData(){
+        setInterval(dopulldata,2000);
+     }
+     async function dopulldata(){
+        var result=await fetch(url);
+        if(result.ok){
+            var data=await result.json()
+            chart.series[0].addPoint(
+                [data[0],data[1]],
+                true,
+                // chart.series[0].data.length >=10,
+                true
+
+            );
+        }
+     }
+   </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>csv</title>
+</head>
+<body>
+     <div style="display:flex;justify-content:space-around ;">
+    <div id="chart" style="width: 400px; height: 300px"></div>
+    <!-- <div id="pie" style="width: 600px; height: 600px"></div> -->
+</div>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script>
+      Highcharts.chart("chart", {
+        // chart:{type:"bar"},
+        chart: { type: "column" ,
+    // events:{
+    //     load:pullData
+    // }
+},
+        // chart:{type:"area"},
+        // chart:{type:"line"},
+        // chart:{type:"spline"},
+        title: { text: "Icecream sales" },
+        // subtitle:{text:"fiscal year 2020"},
+        // xAxis: {
+        //   title: { text: "Year" },
+          // tickInterval:0.5,
+        //   categories: ["2020", "2021", "2022"],
+        //   reversed: true,
+        // },
+        // xAxis:{
+        //     labels:{
+        //         enabled:false
+        //     },
+        //     tickInterval:1
+        // },
+        // yAxis: {
+        //   title: { text: "Coronavirus cases" },
+        //   categories:[0,10000000,20000000,30000000,40000000]
+        // },
+        // yAxis: {
+        //     min:0,
+        //     max:40000000,
+        //   title: { text: "Coronavirus cases" },
+        //   tickInterval:1,
+        // },
+       data:{
+        csvURL:"http://localhost:8080/sales.csv"
+       },
+        legend: { enabled: true },
+      });
+</script>
+
+    
+</body>
+</html>
